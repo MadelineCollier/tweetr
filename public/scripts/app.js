@@ -54,7 +54,7 @@ $(document).ready(function() {
   function renderTweets (tweets) {
     tweets.forEach(function(tweetObj) {
       var tweet = createTweetElement(tweetObj);
-      $("#tweets-container").append(tweet);
+      $("#tweets-container").prepend(tweet);
     })
   };
 
@@ -69,21 +69,29 @@ $(document).ready(function() {
 
   //Handles form submission for the compose tweet section
   //Takes in form text, and posts it into the /tweets JSON object
-  const $form = $('#create-tweet');
+  const $form = $("#create-tweet");
 
   function handleNewTweet(event) {
     event.preventDefault();
     const $form = $(this);
     console.log($form.serialize());
     $.ajax({
-      type: 'POST',
-      url:  '/tweets',
+      type: "POST",
+      url:  "/tweets",
       data: $form.serialize()
     })
       .done(console.log("ajax complete"));
   }
 
-  $form.on('submit', handleNewTweet);
+  $form.on("submit", handleNewTweet);
+
+
+  function loadTweets(){
+    $.ajax("/tweets")
+    .done(renderTweets);
+  }
+
+  loadTweets();
 
 });
 
