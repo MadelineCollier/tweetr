@@ -11,6 +11,10 @@
   opacity: 1;
 }
 
+.tweet:hover .icons{
+  opacity: 1;
+}
+
 .tweet header {
   background-color: #eee;
   border-top-left-radius: 4px;
@@ -64,19 +68,23 @@
   float: right;
   display: inline-block;
   margin: 5px 10px;
+  opacity: 0;
 }
 
 .icons .flag {
+  margin: 0px 3px;
   height: 15px;
   width: 15px;
 }
 
 .icons .like {
+  margin: 0px 3px;
   height: 15px;
   width: 15px;
 }
 
 .icons .retweet {
+  margin: 0px 3px;
   height: 15px;
   width: 15px;
 }
