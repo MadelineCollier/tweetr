@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+  /////////////////////////////////////
+  ///                               ///
+  ///   FUNCTIONS TO CREATE TWEETS  ///
+  ///                               ///
+  /////////////////////////////////////
+
+
   //These three functions create the header, body and footer of the tweet
   //they were taken out of the createTweetElement for readability,
   //and to create more intuitive level of abstraction in the createTweetElement function
@@ -27,10 +34,7 @@ $(document).ready(function() {
   }
 
 
-
-
-
-
+  // works with the ^above^ 3 functions
   //takes in a single tweetData object
   //calls functions for header, body, footer, and appends them to the article tweet
   //reduced to function calls to make the structure/content of the appends more intelligible
@@ -48,7 +52,73 @@ $(document).ready(function() {
 
 
 
-  //takes in "tweets" (an array of objects each containing tweet info)
+
+
+
+  ////////////////////////////////////////////////////////////////
+  ///                                                          ///
+  ///   FUNCTIONS TO HANDLE "COMPOSE TWEET" FORM SUBMISSIONS   ///
+  ///                                                          ///
+  ////////////////////////////////////////////////////////////////
+
+
+
+
+  //tiny function to ensure tweets are proper length/aren't empty
+  //called in the handleNewTweet
+  function validateTweet(tweetText) {
+    if (tweetText.length > 140) {
+      alert("Tweet is too long");
+      return false;
+    } else if (!tweetText){
+      alert("Tweet cannot be empty");
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
+  //Handles form submission for the compose tweet section
+  //Takes in form text, and posts it into the /tweets JSON object
+  function handleNewTweet(event) {
+    event.preventDefault();
+    const $form = $(this);
+    console.log($form.serialize());
+    const formText = $form.find("textarea").val();
+    console.log(formText);
+    if (validateTweet(formText)) {
+      $.ajax({
+        type: "POST",
+        url:  "/tweets",
+        data: $form.serialize()
+      })
+        .done(console.log("ajax complete"));
+    }
+  }
+
+  //event listener triggered when compose tweet form is submitted
+  const $form = $("#create-tweet");
+  $form.on("submit", handleNewTweet);
+
+
+
+
+
+
+
+
+
+
+  /////////////////////////////////////
+  ///                               ///
+  ///   FUNCTIONS TO LOAD TWEETS    ///
+  ///                               ///
+  /////////////////////////////////////
+
+
+
+
   //iterates through "tweets" calling createTweetElement for each given object in the array
   //appends each of the final results of createTweetElement to the DOM
   function renderTweets (tweets) {
@@ -59,33 +129,7 @@ $(document).ready(function() {
   };
 
 
-
-
-
-
-
-
-
-
-  //Handles form submission for the compose tweet section
-  //Takes in form text, and posts it into the /tweets JSON object
-  const $form = $("#create-tweet");
-
-  function handleNewTweet(event) {
-    event.preventDefault();
-    const $form = $(this);
-    console.log($form.serialize());
-    $.ajax({
-      type: "POST",
-      url:  "/tweets",
-      data: $form.serialize()
-    })
-      .done(console.log("ajax complete"));
-  }
-
-  $form.on("submit", handleNewTweet);
-
-
+  //Loads any tweets present in the JSON object located at "/tweets"
   function loadTweets(){
     $.ajax("/tweets")
     .done(renderTweets);
