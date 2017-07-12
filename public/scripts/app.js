@@ -93,17 +93,21 @@ $(document).ready(function() {
         url:  "/tweets",
         data: $form.serialize()
       })
-        .done(console.log("ajax complete"));
+        .done($form[0].reset())
+        .done(loadTweets);
     }
   }
 
-  //event listener triggered when compose tweet form is submitted
+
+
+  ///////////////////////////////////////////////////////////////////
+  ///                                                             ///
+  ///   EVENT LISTENERS TRIGGERED ON SUBMISSION OF COMPOSE FORM   ///
+  ///                                                             ///
+  ///////////////////////////////////////////////////////////////////
+
   const $form = $("#create-tweet");
   $form.on("submit", handleNewTweet);
-
-
-
-
 
 
 
@@ -122,6 +126,7 @@ $(document).ready(function() {
   //iterates through "tweets" calling createTweetElement for each given object in the array
   //appends each of the final results of createTweetElement to the DOM
   function renderTweets (tweets) {
+    $("#tweets-container").empty();
     tweets.forEach(function(tweetObj) {
       var tweet = createTweetElement(tweetObj);
       $("#tweets-container").prepend(tweet);
