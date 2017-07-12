@@ -94,7 +94,8 @@ $(document).ready(function() {
         data: $form.serialize()
       })
         .done($form[0].reset())
-        .done(loadTweets);
+        .done(loadTweets)
+        .done($(".counter").text("140"));
     }
   }
 
