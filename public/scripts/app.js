@@ -98,10 +98,10 @@ $(() => {
   //called in the handleNewTweet
   const validateTweet = (tweetText) => {
     if (tweetText.length > 140) {
-      alert("Tweet is too long");
+      $.flash("Tweet is too long");
       return false;
     } else if (!tweetText){
-      alert("Tweet cannot be empty");
+      $.flash("Tweet cannot be empty");
       return false;
     } else {
       return true;

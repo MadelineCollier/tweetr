@@ -1,8 +1,7 @@
-$(document).ready(function() {
+$(() => {
 
   //hides compose tweet section to begin with
   $(".new-tweet").hide();
-
 
   //displays compose tweet section when the compose button is clicked
   //focuses on text area automatically
@@ -12,6 +11,5 @@ $(document).ready(function() {
        $("#create-tweet textarea").focus();
     });
   });
-
 
 });
