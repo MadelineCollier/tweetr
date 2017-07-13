@@ -114,9 +114,7 @@ $(() => {
   function handleNewTweet(event) {
     event.preventDefault();
     const $form = $(this);
-    console.log($form.serialize());
     const formText = $form.find("textarea").val();
-    console.log(formText);
     if (validateTweet(formText)) {
       $.ajax({
         type: "POST",

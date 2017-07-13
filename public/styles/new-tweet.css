@@ -8,11 +8,22 @@
 
 .new-tweet h2 {
   border-bottom: 1px solid #888;
+  padding-bottom: 2px;
 }
 
 .new-tweet textarea {
   padding: 7px;
   width: 100%;
+}
+
+.new-tweet input {
+  background-color:#eee;
+  border: 1px solid #888;
+  border-radius: 3px;
+}
+
+.new-tweet input:hover {
+  background-color: white;
 }
 
 .counter {
