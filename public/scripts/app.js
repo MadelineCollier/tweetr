@@ -1,10 +1,46 @@
 $(document).ready(function() {
 
+
   /////////////////////////////////////
   ///                               ///
   ///   FUNCTIONS TO CREATE TWEETS  ///
   ///                               ///
   /////////////////////////////////////
+
+
+  //first off, a function to make the time human readable
+  //called below during the creation of the tweet footer
+  function timeSince (time) {
+    var now = Date.now();
+    var elapsed = now - time;
+    var diffMinutes = Math.floor((elapsed / 1000) / 60);
+    var diffHours = Math.floor(diffMinutes / 60);
+    var diffDays = Math.floor(diffHours / 24);
+    if (diffDays > 365) {
+      return "A long time ago"
+    } else if (diffHours > 23) {
+      if (diffDays === 1) {
+        return diffDays + " day ago";
+      } else {
+        return diffDays + " days ago";
+      }
+    } else if (diffMinutes > 59) {
+      if (diffHours === 1) {
+        return diffHours + " hour ago";
+      } else {
+        return diffHours + " hours ago";
+      }
+    } else {
+      if (diffMinutes < 1) {
+        return "Just now";
+      } else if (diffMinutes === 1) {
+        return diffMinutes + " minute ago";
+      } else {
+        return diffMinutes + " minutes ago";
+      }
+    }
+  }
+
 
 
   //These three functions create the header, body and footer of the tweet
@@ -25,7 +61,8 @@ $(document).ready(function() {
 
   function createTweetFooter (tweetData) {
     var $footer = $("<footer>")
-      .append($("<h3>").text(tweetData.created_at))
+      // .append($("<h3>").text(tweetData.created_at))
+      .append($("<h3>").text(timeSince(tweetData.created_at)))
       .append($("<span class='icons'>")
         .append($("<img class='flag' src='/images/flag.png'>"))
         .append($("<img class='retweet' src='/images/retweet.png'>"))
@@ -35,7 +72,6 @@ $(document).ready(function() {
 
 
   // works with the ^above^ 3 functions
-  //takes in a single tweetData object
   //calls functions for header, body, footer, and appends them to the article tweet
   //reduced to function calls to make the structure/content of the appends more intelligible
   function createTweetElement (tweetData) {
@@ -46,7 +82,6 @@ $(document).ready(function() {
 
     return $tweet;
   };
-
 
 
 
