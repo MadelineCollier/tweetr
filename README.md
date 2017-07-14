@@ -5,9 +5,9 @@ As a student of Lighthouse Labs, I built it to practice my HTML, CSS, JS, jQuery
 
 ## Final Product
 
-!["Tweeter Homepage - displays the tweeter feed in chronological order with most recent tweet at the top"]()
-!["Tweeter Composition Section - displays the compose tweet section above the tweeter feed"]()
-!["Tweeter Error Message - displays the error message and red character counter which both indicate that the tweet is over the 140 character limit. This tweet will not be posted until it conforms to the character limit."]()
+!["Tweeter Homepage - displays the tweeter feed in chronological order with most recent tweet at the top"](https://github.com/MadelineCollier/tweetr/blob/master/docs/Tweeter%20Homepage.png?raw=true)
+!["Tweeter Composition Section - displays the compose tweet section above the tweeter feed"](https://github.com/MadelineCollier/tweetr/blob/master/docs/Tweeter%20Compose%20New%20Tweet%20Box.png?raw=true)
+!["Tweeter Error Message - displays the error message and red character counter which both indicate that the tweet is over the 140 character limit. This tweet will not be posted until it conforms to the character limit."](https://github.com/MadelineCollier/tweetr/blob/master/docs/Tweeter%20Tweet%20Too%20Long%20Message.png?raw=true)
 
 ## Getting Started
 
