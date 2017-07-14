@@ -1,8 +1,13 @@
 # Tweeter Project
 
 Tweeter is a simple, single-page Twitter clone.
+As a student of Lighthouse Labs, I built it to practice my HTML, CSS, JS, jQuery and AJAX front-end skills, and my Node, Express and MongoDB back-end skills.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+## Final Product
+
+!["Tweeter Homepage - displays the tweeter feed in chronological order with most recent tweet at the top"]()
+!["Tweeter Composition Section - displays the compose tweet section above the tweeter feed"]()
+!["Tweeter Error Message - displays the error message and red character counter which both indicate that the tweet is over the 140 character limit. This tweet will not be posted until it conforms to the character limit."]()
 
 ## Getting Started
 
@@ -15,3 +20,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+- Body-parser
+- Chance
+- Flash-message
+- Md5
+- MongoDB
+- Nodemon (dev dependency)

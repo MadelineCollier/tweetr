@@ -8,7 +8,7 @@ $(() => {
   const $compose = $(".compose");
   $compose.on("click", function () {
     $(".new-tweet").slideToggle(function(){
-       $("#create-tweet textarea").focus();
+      $("#create-tweet textarea").focus();
     });
   });
 
